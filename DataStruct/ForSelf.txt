@@ -1,0 +1,6 @@
+This text file will be a personal journal for myself and maybe for anyone who might read it.
+
+As a person who doesn't really understand the consquences of half assing everything, maybe this will help with
+personal developement, lol.
+
+*Lowkey also just wanted to add in these folders to github but you know "git only tracks files":|*
