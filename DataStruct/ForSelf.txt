@@ -8,9 +8,24 @@ personal developement, lol.
 * = a key to an idea/concept
 
 Time Complexity
-    *W3Schools notes*- Time Complexity is an Abstract Concept (theory) base measurement. Instead of relying on
-    runtime, you can measue the amount of operations will be needed for certain amount of data due to operations
-    taking N amount time to execute.  
+    W3Schools notes- Time Complexity is an Abstract Concept (theory) base measurement. Instead of relying on
+    runtime, you can measure the amount of operations that will be needed for a 'x' amount of data due to operations
+    taking 'n' amount time to execute. 
+
+    'Operation' means the amount of work and time needed to complete. Ex: In bubble sort the operation is 
+    'Compare and Swap' no matter how many values you have this will never change and so will the time it takes
+    to complete this operation. The operation itself will have a constant time O(1) but the depending how many
+    time it has to do that will be O(n^2) because if 1 element has traverse through the entire array to correct
+    the next element will have to do the same thing -1 of the operation before.
+
+    Chatgpt- When thinking about Time Complexity: *"What operation am I doing, how does the amount of work change
+    with data grows."*
+    
+    when thinking of this sentence with the bubble sort... Operation: Compare 2 indexs and swap (arrays have a
+    constant look up), How does the amount of work change: depending on the size of the array the second operation
+    will be 1 less than before. Making it O(n^2). 
+
+    Key take away is What operation is being done and the amount of work change with the increase size of data.
 
 
 *Linear Data Structures*
