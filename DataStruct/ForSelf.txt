@@ -4,3 +4,14 @@ As a person who doesn't really understand the consquences of half assing everyth
 personal developement, lol.
 
 *Lowkey also just wanted to add in these folders to github but you know "git only tracks files":|*
+
+* = a key to an idea/concept
+
+Time Complexity
+    *W3Schools notes*- Time Complexity is an Abstract Concept (theory) base measurement. Instead of relying on
+    runtime, you can measue the amount of operations will be needed for certain amount of data due to operations
+    taking N amount time to execute.  
+
+
+*Linear Data Structures*
+    Arrays- 
