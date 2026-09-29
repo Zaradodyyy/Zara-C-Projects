@@ -24,8 +24,8 @@ int main(){
     //Computation call
     int* returnResults = SortingFunc(ptrBest, bestSize);
 
-    for(int i = 0; i<averageSize; i++){
-        printf("%d", returnResults[i]);
+    for(int i = 0; i<bestSize; i++){
+        printf("%d", *(returnResults + i));
     }
 
 
@@ -34,6 +34,7 @@ int main(){
 
 //function
 int* SortingFunc(int* rdmArr, size_t arraySize){
+    clock_t starting = clock();
     for(int i = 0; i<arraySize; i++){
         for(int j=i+1; j<arraySize; j++){
             if(rdmArr[i]>rdmArr[j]){
@@ -43,5 +44,10 @@ int* SortingFunc(int* rdmArr, size_t arraySize){
             }
         }
     }
+
+    clock_t end = clock() - starting;
+    printf("CPU time used: %f\n", (float)end / CLOCKS_PER_SEC);
+
     return rdmArr;
+
 } 
