@@ -29,4 +29,18 @@ Time Complexity
 
 
 *Linear Data Structures*
-    Arrays- 
+    Arrays- In C, Arrays are fixed size, the minute you set it there is no adding nor getting rid (you pretty much
+    set a value to zero to mark it. There is a thing called malloc...) anyway, if you can't fixed the size (unless
+    with malloc) you can fix the arrangement of elements in the array.
+
+        Bubble Sort: An algorithm with a Time Complexity O(n^2). In the first 'for loop', 'i', will be the
+        element to check with all of 'j' elements, if true, swap. If all elements are unsorted, the first element
+        might have to go through all elements. 
+            Ex: say we have an array size 10 and array = n.
+                The Outer loop can do 10 iterations or n iterations. The inner loop can also do 10 iterations or n.
+                so Outer/n x Inner/n = n^2
+
+        Insertion Sort: This Algorithm seems to skip the first since there is nothing to compare behind the element.
+        the second element will now be compare to the one before. The behind must be true for the conditions to be met 
+        The algorithm sorts least to greatest.  
+        
