@@ -1,0 +1,37 @@
+Title: Server from beejs guide to network programming
+
+
+Introduction: I'm attempting to create a tcp connection server from the bare basic to intermediate.
+Basic will be able to send and recieve a file from the internet. Progessively adding more details to access dynamic
+website. For now just being able to access Static webistes.(NO VIBE CODING OR AI.)
+
+This will be the place I'll be adding notes.
+
+--The first website to access will be "ToScrape".
+
+
+---Notes: From beejs guide to network programming"---
+{{
+Unix OS use "File Descriptors" for commuincation. To talk about File Descriptors we have to understand the whole,
+this is an Abstraction.
+In the OS abstraction we have "processes" a container for the cpu to run a program and
+inside this container we have threads.
+    When a programs wants to be executed/ran, The OS creates a processes that contains the instance/event to run
+    it's course. The processes has the instructions and data of the program. The OS then puts this container into PCB
+    (Processes Control Block) the OS gathers the processes it's own region of memory for Stack, heap, insrtructions
+    global data, data. While in the PCB the container is labled with it's own meta data(PID, Owner, state, etc).
+
+    The PCB is the important part when talking about File Descriptors. As mention before The PCB contains meta data 
+    about the processes. The File Descriptor is piece of the Memory Management and is located in the Kernal space.
+    I know this is coming.
+
+    When talking about multiple programs and even for one program the container/processess has the
+    idea its has control of the entire machine memory (The OS is the creator of the illusion through virtual memory.) 
+
+}}
+
+---Notes: From RFC2616--- 
+{{
+
+
+}}
