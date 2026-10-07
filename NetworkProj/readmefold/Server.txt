@@ -12,6 +12,7 @@ This will be the place I'll be adding notes.
 
 ---Notes: From beejs guide to network programming"---
 {{
+                                        --File Descriptors--
 Unix OS use "File Descriptors" for commuincation. To talk about File Descriptors we have to understand the whole,
 this is an Abstraction.
 In the OS abstraction we have "processes" a container for the cpu to run a program and
@@ -22,12 +23,15 @@ inside this container we have threads.
     global data, data. While in the PCB the container is labled with it's own meta data(PID, Owner, state, etc).
 
     The PCB is the important part when talking about File Descriptors. As mention before The PCB contains meta data 
-    about the processes. The File Descriptor is piece of the Memory Management and is located in the Kernal space.
-    I know this is coming.
+    about the processes and located in the kernal space. The File Descriptor is piece of the Memory Management that
+    tells the PCB if a file is open or if there is a connection. The PCB is also in control of the FDT(File Descriptor
+    Table)
+    In conclusion, the file descriptor tells the OS about the status of files made by the processes.
 
-    When talking about multiple programs and even for one program the container/processess has the
-    idea its has control of the entire machine memory (The OS is the creator of the illusion through virtual memory.) 
+    Articles: https://www.cs.cornell.edu/courses/cs3410/2024fa/notes/process.html, https://www.baeldung.com/linux/pcb 
 
+
+                                        --
 }}
 
 ---Notes: From RFC2616--- 
