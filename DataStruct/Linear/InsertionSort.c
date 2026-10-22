@@ -10,7 +10,7 @@ int main(){
     */
     srand(time(NULL));
     unsigned int rdm_Arr[10];
-    int len_Arr = sizeof(rdm_Arr)/sizeof(unsigned int);
+    unsigned int len_Arr = sizeof(rdm_Arr)/sizeof(unsigned int);
     size_t sizeArray = sizeof(rdm_Arr)/sizeof(unsigned int);
     
     for(int i =0; i<len_Arr; i++){
@@ -19,14 +19,24 @@ int main(){
     }
 
 
-
     //To check the RdmArr
-    /*
+    
     for(int k =0; k<len_Arr; k++){
-        printf("%u ", rdm_Arr[k]);
-    }*/
+        if(k == 9){
+            printf("%u\n", rdm_Arr[k]);
+        } else{
+            printf("%u ", rdm_Arr[k]);
+        }
+    }
+    
 
+    
+    unsigned int* ResultPtr = InsertionFunc(rdm_Arr, sizeArray);
 
+    for(int x = 0; x < len_Arr; x++){
+        printf("%u ", ResultPtr[x]);
+    }
+    
 
 
     return 0;   
@@ -35,12 +45,12 @@ int main(){
 unsigned int* InsertionFunc(unsigned int* Arr, size_t sizeOfarr){
 
     for(int i = 1; i < sizeOfarr; i++){
-        int insert = i;
-        int currentPosition = Arr[i];
-        for(int j = i-1; i<sizeOfarr; j++){
+        unsigned int insert = i;
+        unsigned int currentPosition = Arr[i];
+        for(int j = i-1; j<sizeOfarr; j++){
             if(Arr[j]> currentPosition){
                 Arr[insert] = Arr[j];
-        Arr[j] = currentPosition; 
+            Arr[j] = currentPosition; 
             }
         }
     }
