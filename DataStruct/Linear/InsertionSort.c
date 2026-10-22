@@ -2,13 +2,13 @@
 #include <stdlib.h>
 #include <time.h>
 
-int* InsertionFunc(int* Arr, size_t sizeOfarr);
+unsigned int* InsertionFunc(unsigned int* Arr, size_t sizeOfarr);
 
 int main(){
     /*
     Creating seed to generate random intergers up to 50 to add into an array up to 10 elements
     */
-    void srand(unsigned int seed);
+    srand(time(NULL));
     unsigned int rdm_Arr[10];
     int len_Arr = sizeof(rdm_Arr)/sizeof(unsigned int);
     size_t sizeArray = sizeof(rdm_Arr)/sizeof(unsigned int);
@@ -18,11 +18,13 @@ int main(){
         rdm_Arr[i] = rdmNum;
     }
 
+
+
     //To check the RdmArr
-    
+    /*
     for(int k =0; k<len_Arr; k++){
         printf("%u ", rdm_Arr[k]);
-    }
+    }*/
 
 
 
@@ -30,7 +32,7 @@ int main(){
     return 0;   
 }
 
-int* InsertionFunc(int* Arr, size_t sizeOfarr){
+unsigned int* InsertionFunc(unsigned int* Arr, size_t sizeOfarr){
 
     for(int i = 1; i < sizeOfarr; i++){
         int insert = i;
