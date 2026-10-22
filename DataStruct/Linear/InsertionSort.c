@@ -8,34 +8,37 @@ int main(){
     /*
     Creating seed to generate random intergers up to 50 to add into an array up to 10 elements
     */
-    srand(2);
-    int rdm_Arr[10];
-    size_t sizeArray = sizeof(rdm_Arr)/sizeof(int);
+    void srand(unsigned int seed);
+    unsigned int rdm_Arr[10];
+    int len_Arr = sizeof(rdm_Arr)/sizeof(unsigned int);
+    size_t sizeArray = sizeof(rdm_Arr)/sizeof(unsigned int);
     
-    for(int i =0; i<sizeArray; i++){
-        int rdmNum = (rand()% 50);
+    for(int i =0; i<len_Arr; i++){
+        unsigned int rdmNum = (rand() % 50)/2;
         rdm_Arr[i] = rdmNum;
     }
 
-    for(int k =0; k<sizeArray; k++){
-        printf("%d", rdm_Arr[k]);
+    //To check the RdmArr
+    
+    for(int k =0; k<len_Arr; k++){
+        printf("%u ", rdm_Arr[k]);
     }
 
 
 
 
-    return 0;
+    return 0;   
 }
 
 int* InsertionFunc(int* Arr, size_t sizeOfarr){
 
     for(int i = 1; i < sizeOfarr; i++){
         int insert = i;
-        int currentPositionV = Arr[i];
+        int currentPosition = Arr[i];
         for(int j = i-1; i<sizeOfarr; j++){
-            if(Arr[j]> currentPositionV){
+            if(Arr[j]> currentPosition){
                 Arr[insert] = Arr[j];
-        Arr[j] = currentPositionV; 
+        Arr[j] = currentPosition; 
             }
         }
     }
