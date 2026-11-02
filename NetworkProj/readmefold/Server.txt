@@ -31,7 +31,28 @@ inside this container we have threads.
     Articles: https://www.cs.cornell.edu/courses/cs3410/2024fa/notes/process.html, https://www.baeldung.com/linux/pcb 
 
 
-                                        --
+                                        --Low-Level Nonsense Network Theory
+Sockets, Sockets... the package being sent over the internet. They are created when you have data that is contained
+in lets say FTP(File Transfer Protocol) for instance. Lets also say that these files are important so we sent this
+as Data Stream, and we are gonna wrap this container inside another container called TCP(Transmission Control Protocl)
+thats wraped with M.A.C just so the other machine will know what machine in a local Network. So with this data->FTP->
+TCP->Marked with M.A.C->Ethernet. This process is called encapsulation.
+                                        --Client/Server Architecture
+-The goal is to be able ask another server to send some files over to our server to read-
+    REQUIRMENTS
+        -Client
+            -Request Data
+            Process Flow
+                CreateSocket->Connect()->Send()->Recieve()
+        -Server
+            -Be able to process Responses
+            -Be able to Read && Write Files
+            Process Flow
+                CreateSocket->Connect()->Bind()->Listen()->Accept()->Recv->Send
+    
+    Functions Possibly needed
+        RequestFunc(),
+        ProcessFunc(),
 }}
 
 ---Notes: From RFC2616--- 
