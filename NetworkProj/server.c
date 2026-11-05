@@ -1,8 +1,11 @@
 #include <stdio.h>
-#include <stdlib.h>
+#include <stdlib.h>    
 #include <sys/socket.h>
 #include <sys/types.h>
+#include <sys/errno.h>
+#include <netdb.h>
 #include <string.h>
+
 /*
 -The goal is to be able ask another server to send some files over to our server to read-
     REQUIRMENTS
@@ -11,60 +14,49 @@
         -Server
             Process Flow
                 CreateSocket->Connect()->Bind()->Listen()->Accept()->Recv->Send
-    
-    Functions Possibly needed
-        RequestFunc(),
-        ProcessDataFunc(),
-        SendFunc(),
-        RecoverFunc()
-
+                I want an open socket that is waiting for a connection. Acccepts connection processes the connection
 
 */
-
-//Stucts
-// Host/Service Name Lookups
-typedef struct addinfo{
-    int AI_Flags; // AI_Passive, AI_Canonname
-    int AI_Family; // AF_INET, AF_INET6, AF_UNSPEC
-    int AI_Socktype; // SOCK_STREAM, SOCK_DGRAM
-    int AI_Protocol; // use 0 for "any"
-    size_t *pAI_sockaddr; // size of ai_addr in bytes
-    char *pAI_canonnamep; //Full Canocial Name
-
-     ADDRINFO *ai_next; //Linked_List, Next node
-
-}ADDRINFO;
-
-// Struct holds Socket information for many types of sockets
-typedef struct sockaddr{
-    unsigned short sa_family; // adress family AF_xxx v4 or v6
-    char sa_data[14]; // 14 byte of protocol address 
-} SA;
-
-
-// s=socket in=internet sin=socketinternet
-typedef struct sockadd_in{
-    short int sin_family; // Address family
-    unsigned short int sin_port; // Port Number
-    struct in_addr sin_addr; // Internet address
-    unsigned char sin_zero[8]; // Same size as struct sockaddr
-}SAI;
-
-// Internet address
-typedef struct in_addr{
-    unsigned long s_addr;
-}IA;
-
+#define PORT "3572" // Port users will be connecting to.
+#define Backlog 2 //How many connections are allowed.
 
 int main(){
-    SAI pt;
-    SAI addy;
+    // Our server endpoint code
+//Socket struct
+    struct addrinfo hints, *servinfo, *res;
+    int SockFD;
 
-    //type of address and socket
+    memset(&hints, 0, sizeof(hints));
 
-    //Address and Port of server
-    pt.sin_port = 8080;
-    addy.sin_addr.s_addr = "127.0.0.1";
+    // LocalHost to be the IP
+    hints.ai_family = PF_INET; // Version 4
+    hints.ai_socktype = SOCK_STREAM; // Data type
+
+    getaddrinfo(NULL, PORT, &hints, &res);
+
+    //Creating Socket with the information that the getaddrinfo provided
+    SockFD = socket(res->ai_family, res->ai_socktype, res->ai_protocol); // Output: 3
+    //Binding Socket to IP and PORT
+    if(bind(SockFD, res->ai_addr, res->ai_addrlen)!=0){ // Should Return 0 else -1
+        perror("Binding: Line 43"); 
+        exit(1);
+    }
+    //Listen on PORT for any oncoming request
+    if(listen(SockFD, Backlog)!=0){
+        perror("Listening: Line 45"); // Should return 0 if everything went right
+        exit(1);
+    }
+    // Accepting User that messages the address and port after finishing Three-Way-Handshake
+    if(accept(SockFD, res->ai_addr, res->ai_addrlen) == -1){ // The success return value is a Non-Negative int
+        perror("Accecpt: Line 56");
+        exit(1);
+    }    
+
+    while(SockFD > 0){
+        printf("Listening for request");
+    }
+
+
 
 
 
