@@ -1,11 +1,12 @@
 #include <stdio.h>
+#include <unistd.h>
 #include <stdlib.h>    
 #include <sys/socket.h>
 #include <sys/types.h>
 #include <sys/errno.h>
 #include <netdb.h>
 #include <string.h>
-
+#include <time.h>
 /*
 -The goal is to be able ask another server to send some files over to our server to read-
     REQUIRMENTS
@@ -22,6 +23,7 @@
 
 int main(){
     // Our server endpoint code
+    struct tm timer;
 //Socket struct
     struct addrinfo hints, *servinfo, *res;
     int SockFD;
@@ -46,12 +48,25 @@ int main(){
         perror("Listening: Line 45"); // Should return 0 if everything went right
         exit(1);
     }
+    printf("Socket is listening for oncoming request.\n");
+    //Setting a timelimit for testing connection
+    for(int t=0; t<=5; t++){
+        printf("Waiting for conncetion\n");
+        sleep(5);
+        if(t ==5){
+            printf("Closing connection\n");
+            close(SockFD);
+            exit(1);
+        }
+    }
+
     // Accepting User that messages the address and port after finishing Three-Way-Handshake
-    if(accept(SockFD, res->ai_addr, res->ai_addrlen) == -1){ // The success return value is a Non-Negative int
+    if(accept(SockFD, res->ai_addr, &res->ai_addrlen) == -1){ // The success return value is a Non-Negative int
         perror("Accecpt: Line 56");
         exit(1);
-    }    
+    }  
 
+    // When socket is connected this loop will keep the convo going.
     while(SockFD > 0){
         printf("Listening for request");
     }
